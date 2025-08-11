@@ -32,6 +32,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('helpdesk_api.urls')),  # Include your API routes
+    path('api/v1/helpdesk/', include('helpdesk_api.urls')),  # Include your API routes, no prefix here
+    
+    # Swagger UI
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
+    # Add these for raw schema access:
+    path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger.yaml', schema_view.without_ui(cache_timeout=0), name='schema-yaml'),
 ]
