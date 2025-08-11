@@ -13,3 +13,13 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.status})"
+    
+class InventoryItem(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    bin = models.CharField(max_length=50, blank=True, null=True)
+    bbl = models.CharField(max_length=50, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
